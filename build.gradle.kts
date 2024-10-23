@@ -4,7 +4,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.cashir"
+group = "com.outsoft"
 version = "1.2-SNAPSHOT"
 
 repositories {
