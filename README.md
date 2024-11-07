@@ -59,12 +59,8 @@ Java:
 ```java
 //Create list of search criteria
 List<SearchCriteria> search = new ArrayList<>();
-search.
-
-add(new SearchCriteria("name", Operation.EQUALITY, "Max",Type.AND));
-    search.
-
-add(new SearchCriteria("dateOfBirth", Operation.GREATER_THAN, "2000-03-22",Type.AND));
+search.add(new SearchCriteria("name", Operation.EQUALITY, "Max",Type.AND));
+search.add(new SearchCriteria("dateOfBirth", Operation.GREATER_THAN, "2000-03-22",Type.AND));
 //Build specification from criteria list
 Specification<Customer> specification = builder.build(search);
 //Perform the search using the built specification, which can be used with any Specification<T> compatible method.
@@ -85,7 +81,11 @@ val specification = builder.build<Customer>(search)
 val result: List<Customer> = customerRepository.findAll(specification)
 ```
 
-In the example above we are performing search for all customers with the name "Max", born after "2020-03-22"
+In the example above we are performing search for all customers with the name "Max", born after "2020-03-22":
+
+```sql
+select * from customer where name = 'MAX'and dateOfBirth >= '2020-03-22'
+```
 
 ## 2. Customization
 
