@@ -4,13 +4,13 @@ This library is built to help construct dynamic searches using Spring Data JPA S
 The basic usage scenario involves building complex queries by creating a list of unified objects representing
 conditions.
 
-## Maven
+### Dependencies
 
-## Compatibility
+The following versions of dependencies are used in this lib:
 
-| Version | Spring data jpa version |
-|---------|-------------------------|
-| 2.4.3   | 2.4.3                   |
+- **Spring Boot**: `2.4.3`
+- **JDK**: `11`
+- **Kotlin**: `1.7.22`
 
 ## 1. Quick start
 
@@ -38,7 +38,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 Java:
 
 ```java
-import com.outsoft.jpa.specification.SpecificationBuilder;
+import com.outsoft.jss.SpecificationBuilder;
 
 // Reusable, the best approach is to create it as a Spring Bean and reuse it wherever needed.
 SpecificationBuilder builder = new SpecificationBuilder(); 
@@ -47,12 +47,12 @@ SpecificationBuilder builder = new SpecificationBuilder();
 Kotlin:
 
 ```kotlin
-import com.outsoft.jpa.specification.SpecificationBuilder
+import com.outsoft.jss.SpecificationBuilder
 
 val builder = SpecificationBuilder()
 ```
 
-### 1.2 Now we can create a list of com.outsoft.jpa.specification.SearchCriteria and build a Specification using the SpecificationBuilder instance:
+### 1.2 Now we can create a list of com.outsoft.jss.SearchCriteria and build a Specification using the SpecificationBuilder instance:
 
 Java:
 
@@ -92,14 +92,14 @@ select * from customer where name = 'MAX'and dateOfBirth >= '2020-03-22'
 ### 2.1 Supported types:
 
 By default, SpecificationBuilder is able to handle the following primitives and types(reference to
-com.outsoft.jpa.specification.TypeConverter):
+com.outsoft.jss.TypeConverter):
 
 1. integer, long, boolean, double primitives and all corresponding wrapper types
 2. java.time types - LocalDate, LocalDateTime, ZoneOffset, ZonedDateTime
 3. java.util.UUID
 4. all predefined and custom Enums
 
-To handle other types, we need to implement a custom com.outsoft.jpa.specification.TypeConverter and pass it to the
+To handle other types, we need to implement a custom com.outsoft.jss.TypeConverter and pass it to the
 constructor when creating the SpecificationBuilder:
 
 Java:
@@ -152,4 +152,4 @@ select * where
 
 In case, any custom logic is needed custom implementation of SpecificationBuilder class can be implemented as well as
 SearchCriteria class.
-See com.outsoft.jpa.specification.SpecificationBuilder as an example.
+See com.outsoft.jss.SpecificationBuilder as an example.
